@@ -39,6 +39,7 @@ group :development do
   gem 'faker'
 
   gem 'rspec-rails', '~> 3.5'
+  gem 'rubocop', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
