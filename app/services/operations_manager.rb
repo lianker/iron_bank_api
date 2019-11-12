@@ -1,0 +1,3 @@
+class OperationsManager
+  
+end
