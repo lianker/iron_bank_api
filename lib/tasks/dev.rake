@@ -19,14 +19,16 @@ namespace :dev do
 
     puts 'generate deposits'
     Account.all.each do |account|
-      Transaction.create!(
-        source_account_id: nil,
-        destination_account_id: account.id,
-        ammount: 1000.00,
-        operation: 'DEPOSIT',
-        operation_type: 'CREDIT',
-        account_id: account.id
-      )
+      Random.rand(5).times do
+        Transaction.create!(
+          source_account_id: nil,
+          destination_account_id: account.id,
+          ammount: rand(100.0..1000.0).round(2),
+          operation: 'DEPOSIT',
+          operation_type: 'CREDIT',
+          account_id: account.id
+        )
+      end
     end
 
     puts 'generate deposits SUCCESS'
