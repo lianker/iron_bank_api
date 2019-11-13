@@ -45,14 +45,14 @@ describe OperationsManager do
       end
 
       it 'should call Transaction.find_by(account_id:?) method' do
-        expect(Transaction).to receive(:find_by)
+        expect(Transaction).to receive(:where)
           .with(account_id: account_id).and_return(nil).and_call_original
 
         subject.check_balance(account_number: '1964')
       end
 
       it 'if transactions nil returns data with key named balance=0.00' do
-        allow(Transaction).to receive(:find_by)
+        allow(Transaction).to receive(:where)
           .with(account_id: account_id).and_return(nil)
         result = subject.check_balance(account_number: '1964')
         expect(result[:data])
@@ -67,7 +67,7 @@ describe OperationsManager do
             .and_return(val)
         end
 
-        allow(Transaction).to receive(:find_by)
+        allow(Transaction).to receive(:where)
           .with(account_id: account_id).and_return(transactions)
 
         expected = transactions[0].ammount + transactions[1].ammount
