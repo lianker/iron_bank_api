@@ -16,5 +16,19 @@ namespace :dev do
       )
     end
     puts 'Add user and accounts data to dev env SUCCESS'
+
+    puts 'generate deposits'
+    Account.all.each do |account|
+      Transaction.create!(
+        source_account_id: nil,
+        destination_account_id: account.id,
+        ammount: 1000.00,
+        operation: 'DEPOSIT',
+        operation_type: 'CREDIT',
+        account_id: account.id
+      )
+    end
+
+    puts 'generate deposits SUCCESS'
   end
 end

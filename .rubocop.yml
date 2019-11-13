@@ -1,4 +1,5 @@
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'lib/**/*.rake'
   
