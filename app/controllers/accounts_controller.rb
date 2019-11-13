@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :update, :destroy]
+  before_action :set_account, only: %i[show update destroy]
 
   # GET /accounts
   def index
@@ -38,14 +40,21 @@ class AccountsController < ApplicationController
     @account.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = Account.find(params[:id])
-    end
+  def check_balance
+    operations = OperationsManager.new
 
-    # Only allow a trusted parameter "white list" through.
-    def account_params
-      params.require(:account).permit(:number)
-    end
+    render json: operations.api_check_balance(account_number: params[:number])
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = Account.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def account_params
+    params.require(:account).permit(:number)
+  end
 end
