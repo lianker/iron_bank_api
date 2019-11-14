@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :authenticate
+
   before_action :set_account, only: %i[show update destroy]
 
   # GET /accounts
@@ -68,5 +71,19 @@ class AccountsController < ApplicationController
                                     :source_account_number,
                                     :destination_account_number,
                                     :ammount)
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, _options|
+      # Compare the tokens in a time-constant manner, to mitigate
+      # timing attacks.
+
+      user = User.find_by(token: token)
+
+      ActiveSupport::SecurityUtils.secure_compare(
+        ::Digest::SHA256.hexdigest(token),
+        ::Digest::SHA256.hexdigest(user.token)
+      )
+    end
   end
 end
