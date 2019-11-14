@@ -46,6 +46,15 @@ class AccountsController < ApplicationController
     render json: operations.api_check_balance(account_number: params[:number])
   end
 
+  def transfer
+    operations = OperationsManager.new
+
+    render json: operations
+      .transfer(source_account_number: params[:source_account_number],
+                destination_account_number: params[:destination_account_number],
+                ammount: params[:ammount])
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -55,6 +64,9 @@ class AccountsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def account_params
-    params.require(:account).permit(:number)
+    params.require(:account).permit(:number,
+                                    :source_account_number,
+                                    :destination_account_number,
+                                    :ammount)
   end
 end

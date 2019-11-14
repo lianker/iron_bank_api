@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope 'operations' do
     get '/check_balance/:number' => 'accounts#check_balance'
+    post '/transfer' => 'accounts#transfer'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
