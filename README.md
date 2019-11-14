@@ -59,7 +59,7 @@ bundle exec rspec --format d
 ```shell
 rails s
 ```
-### Buscando Usuarios
+### Buscando Usuários
 Para os exemplos a seguir primeiro é preciso consultar os dados de usuario previamente cadastrados. Abaixo segue um exemplo
 
 ```shell
@@ -77,7 +77,7 @@ Com os dados de algum dos usuários listados no comando anterior é possível co
 curl http://localhost:3000/operations/check_balance/<account_number> -H 'Accept: application/vnd.api+json' -H 'Authorization: Token <user_token>'
 ```
 
-### Fazendo um transferência
+### Fazendo uma transferência
 
 para este exemplo é necessário uma conta de origem, uma conta de destino e uma quantia a ser transferida.
 
