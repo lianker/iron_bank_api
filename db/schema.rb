@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_035046) do
+ActiveRecord::Schema.define(version: 2019_11_14_014351) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "number"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_035046) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "token"
   end
 
   add_foreign_key "accounts", "users"
