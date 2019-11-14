@@ -79,10 +79,11 @@ class AccountsController < ApplicationController
       # timing attacks.
 
       user = User.find_by(token: token)
+      user_token = user.nil? ? '' : user.token
 
       ActiveSupport::SecurityUtils.secure_compare(
         ::Digest::SHA256.hexdigest(token),
-        ::Digest::SHA256.hexdigest(user.token)
+        ::Digest::SHA256.hexdigest(user_token)
       )
     end
   end
