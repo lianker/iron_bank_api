@@ -1,6 +1,6 @@
 # Iron Bank
 
-Este projeto é para aprendizado do framework **Ruby on Rails**. Uma api capaz de fazer operações bancárias. 
+Este projeto é para aprendizado do framework **Ruby on Rails**. Uma API capaz de fazer operações bancárias. 
 
 > Todos os comandos a seguir devem ser executados no terminal
 
@@ -20,10 +20,10 @@ No **Ubuntu** o Sqlite pode ser instalado através do comando
 sudo apt install sqlite3 libsqlite3-dev
 ```
 
-## Clonando o repositorio
+## Clonando o repositório
 
 ```shell
-git clone git@gitlab.com:lianker/iron_bank_api.git
+git clone https://gitlab.com/lianker/iron_bank_api.git
 ```
 
 Após clonar, entre na pasta
@@ -49,7 +49,7 @@ rails db:create db:migrate dev:setup
 ## Rodando os testes
 
 ```shell
-bundle exec rspec
+bundle exec rspec --format d
 ```
 
 ## Exemplos
